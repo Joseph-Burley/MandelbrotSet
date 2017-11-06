@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<script src="complexNum.js"></script>
+		<script src="mandelbrot.js"></script>
+		<script>
+			function myRun()
+			{
+				var primary_canvas = document.getElementById("myCanvas");
+				var args = document.getElementById("myForm");
+				document.getElementById("statusTag").innerHTML = "Go Get A Sandwich";
+				var z_x = parseFloat(args["zoom_x"].value);
+				var z_y = parseFloat(args["zoom_y"].value);
+				var d   = parseFloat(args["width"].value / primary_canvas.width);
+				var exp = parseInt(args["exponent"].value);
+				var mit = parseInt(args["it_max"].value);
+				var thresh = parseInt(args["it_thresh"].value);
+				generate(primary_canvas, z_x, z_y, d, exp, mit, thresh);
+				document.getElementById("statusTag").innerHTML = "Done";
+			}
+		</script>
+	</head>
+	<body>
+		<div>
+			<form id="myForm">
+				Exponent: <input type="number" name="exponent" value="2" min="2">
+				<br>
+				Iterations: 
+				Maximum: <input type="number" name="it_max" value="500" min="1">
+				Threshold: <input type="number" name="it_thresh" value="250" min="1">
+				<br>
+				Zoom:
+				x: <input type="number" name="zoom_x" value="0" min="-2" max="2">
+				y: <input type="number" name="zoom_y" value="0" min="-2" max="2">
+				width:  <input type="number" name="width" value="4">
+				<br>
+				Reset: <input type="reset">
+			</form>
+			<br>
+			<button type="button" onclick="myRun()">run</button>
+		</div>
+		<br>
+		<p id="statusTag">Ready</p>
+		<div>
+			<canvas id="myCanvas" width="500" height="500" style="border:1px solid #000000;"></canvas>
+		</div>
+		<br>
+		<p>Videos Explaining the Mandelbrot Set</p>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/NGMRB4O922I?rel=0" frameborder="0" allowfullscreen></iframe>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/qhbuKbxJsk8?rel=0" frameborder="0" allowfullscreen></iframe>
+		
+		
+	</body>
+</html>
